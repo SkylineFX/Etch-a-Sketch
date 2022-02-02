@@ -41,7 +41,7 @@ main{
     background-color: var(--primary);
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-around;
     gap: 10px;
     align-items: center;
 }
@@ -151,7 +151,7 @@ button {
 
     .settings {
         width: 200px;
-        height: 500px;
+        height: 450px;
         align-items: center;
     }
 
