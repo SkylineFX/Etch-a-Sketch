@@ -1,5 +1,6 @@
 const PRIMARY = "#d8dee9";
 const SECONDARY = "#4c566a"
+const GRID_COLOR = "#eceff4"
 
 const grid = document.querySelector(".grid");
 const colorPicker = document.querySelector("#colorPicker");
@@ -28,7 +29,7 @@ function updateGrid()
         for(let j = 1; j <= cellNumber; j++)
         {
             const newDiv = document.createElement("div");
-            newDiv.style.backgroundColor = PRIMARY;
+            newDiv.style.backgroundColor = "#eceff4";
             grid.appendChild(newDiv);
         }
 }
@@ -46,7 +47,7 @@ function changeMode(event)
 function clearGrid()
 {
     children = Array.from(grid.children);
-    children.forEach(item => item.style.backgroundColor = PRIMARY);
+    children.forEach(item => item.style.backgroundColor = GRID_COLOR);
 }
 
 function drawGrid(event)

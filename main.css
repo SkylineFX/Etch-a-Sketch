@@ -30,7 +30,7 @@ main{
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-    background-color: #4c566a;
+    background-color: var(--primary);
 
 }
 
@@ -47,6 +47,7 @@ main{
 }
 
 .grid {
+    box-shadow: 10px 10px 10px 1px var(--secondary);
     grid-column-start: 7;
     grid-column-end: 11;
     grid-row-start: 2;
