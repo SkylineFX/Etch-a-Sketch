@@ -1,14 +1,17 @@
-const DEFAULT = "#d8dee9";
+const PRIMARY = "#d8dee9";
+const SECONDARY = "#4c566a"
 
 const grid = document.querySelector(".grid");
+const colorPicker = document.querySelector("#colorPicker");
 const buttons = document.querySelector(".buttons");
 const clearBtn = document.querySelector(".clear");
-let sizePara = document.querySelector(".inputValue");
+const sizePara = document.querySelector(".inputValue");
 const slider = document.getElementById("range");
 
 let cellNumber = slider.value;
-let colorMode = true, rainbowMode = false, eraserMode = false;
-updateGrid();
+let drawMode = "color";
+colorPicker.value = SECONDARY;
+let drawColor = colorPicker.value;
 
 function updateGrid()
 {
@@ -25,53 +28,60 @@ function updateGrid()
         for(let j = 1; j <= cellNumber; j++)
         {
             const newDiv = document.createElement("div");
-            newDiv.style.backgroundColor = DEFAULT;
+            newDiv.style.backgroundColor = PRIMARY;
             grid.appendChild(newDiv);
         }
 }
 
-function clearGrid()
+function changeMode(event)
 {
-    //to be continued...
+    if(event.target.classList.contains("color"))
+        drawMode = "color";
+    else if(event.target.classList.contains("rainbow"))
+        drawMode = "rainbow";
+    else if(event.target.classList.contains("eraser"))
+        drawMode = "eraser";
 }
 
-clearBtn.addEventListener('click', () => {
-    //clear grid
+function clearGrid()
+{
     children = Array.from(grid.children);
-    children.forEach(item => item.style.backgroundColor = DEFAULT);
-    colorMode = true;
-});
+    children.forEach(item => item.style.backgroundColor = PRIMARY);
+}
 
-buttons.addEventListener('click', (event) => {
-    //change mode
-    colorMode = false; rainbowMode = false; eraserMode = false;
-    if(event.target.classList.contains("color"))
-        colorMode = true;
-    else if(event.target.classList.contains("rainbow"))
-        rainbowMode = true;
-    else if(event.target.classList.contains("eraser"))
-        eraserMode = true;
-});
-
-slider.addEventListener('change', () => {
-    //update grid size
-    cellNumber = slider.value;
-    sizePara.textContent = `${cellNumber} x ${cellNumber}`;
-    
-    updateGrid();
-});
-
-grid.addEventListener('mouseover', (event) => {
-    //draw grid
-    if(colorMode)
-        event.target.style.backgroundColor = "red";
-    else if(rainbowMode)
+function drawGrid(event)
+{
+    if(drawMode == "color")
+        event.target.style.backgroundColor = drawColor;
+    else if(drawMode == "rainbow")
     {
         const R = Math.floor(Math.random()*256);
         const G = Math.floor(Math.random()*256);
         const B = Math.floor(Math.random()*256);
         event.target.style.backgroundColor = `rgb(${R}, ${G}, ${B})`;
     }
-    else if(eraserMode)
-        event.target.style.background = DEFAULT;
+    else if(drawMode == "eraser")
+        event.target.style.background = PRIMARY;
+}
+
+//update color pick
+colorPicker.addEventListener('change', () => drawColor = colorPicker.value);
+
+//change mode
+buttons.addEventListener('click', (event) => changeMode(event));
+
+//clear grid
+clearBtn.addEventListener('click', () => clearGrid());
+
+//update grid size
+slider.addEventListener('change', () => {
+    cellNumber = slider.value;
+    sizePara.textContent = `${cellNumber} x ${cellNumber}`;
+    
+    updateGrid();
 });
+
+//draw grid
+grid.addEventListener('mouseover', (event) => drawGrid(event));
+
+updateGrid();

@@ -1,11 +1,16 @@
+:root {
+  --primary: #d8dee9;
+  --secondary: #4c566a;
+}
+
 *{
     margin: 0;
     padding: 0;
 }
 
 body {
-    background-color: #d8dee9;
-    color: #4c566a;
+    background-color: var(--primary);
+    color: var(--secondary);
     font-family: 'Ubuntu', sans-serif;
 }
 
@@ -34,7 +39,7 @@ main{
     grid-column-end: 6;
     grid-row-start: 2;
     grid-row-end: 12;
-    background-color: #d8dee9;
+    background-color: var(--primary);
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -46,23 +51,24 @@ main{
     grid-column-end: 11;
     grid-row-start: 2;
     grid-row-end: 12;
-    background-color: #d8dee9;
+    background-color: var(--primary);
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
 }
 
-.colorPicker {
+.colorContainer {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-p{
+#colorPicker{
     height: 80px;
     width: 80px;
-    background-color: #4c566a;
+    border: none;
+    background-color: var(--primary);
 }
 
 .buttons{
@@ -77,9 +83,9 @@ p{
 button {
     width: 80%;
     height: 4vh;
-    border: 1px solid #4c566a;
+    border: 1px solid var(--secondary);
     border-radius: 5px;
-    color: #4c566a;
+    color: var(--secondary);
     font-size: 14px;
 }
 
@@ -95,7 +101,7 @@ button {
     -webkit-appearance: none;
     width: 80%;
     border-radius: 10px;
-    background-color: #4c566a;
+    background-color: var(--secondary);
 }
 
 .slider::-webkit-slider-thumb {
@@ -103,7 +109,7 @@ button {
   appearance: none;
   width: 15px;
   height: 15px;
-  background: #d8dee9;
+  background: var(--primary);
   border-radius: 50%;
   cursor: pointer;
 }
