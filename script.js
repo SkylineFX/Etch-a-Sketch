@@ -62,17 +62,17 @@ function drawGrid(event)
         event.target.style.backgroundColor = `rgb(${R}, ${G}, ${B})`;
     }
     else if(drawMode == "eraser")
-        event.target.style.background = PRIMARY;
+        event.target.style.background = GRID_COLOR;
 }
+
+//clear grid
+clearBtn.addEventListener('click', clearGrid);
 
 //update color pick
 colorPicker.addEventListener('change', () => drawColor = colorPicker.value);
 
 //change mode
-buttons.addEventListener('click', (event) => changeMode(event));
-
-//clear grid
-clearBtn.addEventListener('click', () => clearGrid());
+buttons.addEventListener('click', changeMode);
 
 //update grid size
 slider.addEventListener('change', () => {
@@ -83,6 +83,6 @@ slider.addEventListener('change', () => {
 });
 
 //draw grid
-grid.addEventListener('mouseover', (event) => drawGrid(event));
+grid.addEventListener('mouseover', drawGrid); //grid.addEventListener('mouseover', (event) => drawGrid(event));
 
 updateGrid();
