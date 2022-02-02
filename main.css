@@ -48,11 +48,11 @@ main{
     grid-row-end: 12;
     background-color: #d8dee9;
     display: grid;
-    grid-template-columns: repeat(64, 1fr);
-    grid-template-rows: repeat(64, 1fr);
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
 }
 
-.color {
+.colorPicker {
     width: 100%;
     display: flex;
     justify-content: center;
